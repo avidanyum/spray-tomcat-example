@@ -35,7 +35,19 @@ trait Service extends HttpService {
   import com.example.domain.Person
 
   val myRoute =
-    path("") {
+    pathSingleSlash {
+      get {
+        respondWithMediaType(`text/html`) {
+          complete {
+            <html>
+              <body>
+                <h1>Say hello to <i>spray-routing</i> on <i>tomcat</i>!</h1>
+              </body>
+            </html>
+          }
+        }
+      }
+    } ~ path("something") {
       get {
         respondWithMediaType(`text/html`) {
           complete {
